@@ -23,8 +23,10 @@ end
 class Gameboard
   def initialize
     puts "Welcome to Tic-Tac-Toe!"
-    print "What size board?: "
+    print "What size board? (3-9): "
     @size = gets.chomp.to_i
+    @size = 3 if @size < 3
+    @size = 9 if @size > 9
     @board = Array.new(@size**2)
  
     @board.each_index do |i|
