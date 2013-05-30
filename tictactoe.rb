@@ -108,7 +108,10 @@ class Gameboard
   def player_move
     print "Player #{current_player.symbol}: Where would you like to move? "
     space = gets.chomp.to_i
-    if @board[space - 1].value.is_a? Integer
+    if space < 1 || space > @size**2
+      puts "Try again"
+      player_move
+    elsif @board[space - 1].value.is_a? Integer
       @board[space - 1].value = current_player.symbol
     else
       puts "Try again"
